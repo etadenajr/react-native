@@ -1,4 +1,4 @@
-import { ADD_NOTE, REMOVE_NOTE } from "../constant/Action";
+import { ADD_NOTE, REMOVE_NOTE, UPDATE_NOTE } from "../constant/Action";
 
 export const noteReducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +7,17 @@ export const noteReducer = (state, action) => {
 
     case REMOVE_NOTE:
       return state.filter((note) => note.id !== action.payload);
+
+    case UPDATE_NOTE:
+      return state.map((note) => {
+        if (note.id === action.payload) {
+          return {
+            ...note,
+            complete: !note.complete,
+          };
+        }
+        return note;
+      });
 
     default:
       return state;

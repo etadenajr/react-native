@@ -1,6 +1,8 @@
 import React, { useState, useContext, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { TextInput, FAB } from "react-native-paper";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 import { Context } from "../context/NoteContext";
 import { ADD_NOTE } from "../constant/Action";
@@ -19,9 +21,11 @@ function AddNote({ navigation }) {
     value.dispatch({
       type: ADD_NOTE,
       notes: {
-        id: Date.now(),
+        id: uuidv4(),
         title: noteTitle,
         value: noteValue,
+        date: Date(),
+        complete: false,
       },
     });
     value.setNoteTitle("");
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   fab: {
-    backgroundColor: "gray",
+    backgroundColor: "#9400FF",
     position: "absolute",
     margin: 15,
     right: 0,

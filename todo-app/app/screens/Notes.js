@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import { Text, FAB, List } from "react-native-paper";
 
 import { Context } from "../context/NoteContext";
-import { REMOVE_NOTE } from "../constant/Action";
+import { REMOVE_NOTE, UPDATE_NOTE } from "../constant/Action";
 import NoteCard from "../components/NoteCard";
 
 function Notes({ navigation }) {
@@ -14,24 +14,27 @@ function Notes({ navigation }) {
       <View style={styles.container}>
         {state.length === 0 ? (
           <View style={styles.textContainer}>
-            <Text style={styles.text}>Welcome to SimpleNote</Text>
+            <Text style={styles.text}>Simple-Note</Text>
           </View>
         ) : (
           <View style={styles.listContainer}>
             <ScrollView>
-              {state.map(({ id, title, value }) => (
+              {state.map(({ id, title, value, date, complete }) => (
                 <List.Item
                   key={id}
                   description={() => (
                     <View key={id} style={styles.itemContainer}>
-                      <NoteCard title={title} value={value} />
-                      <FAB
-                        icon="delete"
-                        small
-                        style={styles.fabItem}
-                        onPress={() => {
+                      <NoteCard
+                        title={title}
+                        value={value}
+                        date={date}
+                        onPressCom={() => {
+                          dispatch({ type: UPDATE_NOTE, payload: id });
+                        }}
+                        onPressDel={() => {
                           dispatch({ type: REMOVE_NOTE, payload: id });
                         }}
+                        complete={complete}
                       />
                     </View>
                   )}
@@ -63,10 +66,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 24,
+    fontFamily: "sans-serif-thin",
+    fontSize: 50,
+    color: "#9400FF",
   },
   fab: {
-    backgroundColor: "gray",
+    backgroundColor: "#9400FF",
     position: "absolute",
     margin: 20,
     right: 0,
@@ -77,12 +82,6 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     flexDirection: "row",
-  },
-  fabItem: {
-    backgroundColor: "gray",
-    position: "absolute",
-    right: 0,
-    top: 0,
   },
 });
 
