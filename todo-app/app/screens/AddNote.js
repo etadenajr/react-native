@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useState, useContext, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { TextInput, FAB } from "react-native-paper";
 
-function AddNote() {
+import { Context } from "../context/NoteContext";
+import { ADD_NOTE } from "../constant/Action";
+
+function AddNote({ navigation }) {
+  const { dispatch } = useContext(Context);
+  const [noteTitle, setNoteTitle] = useState("");
+  const [noteValue, setNoteValue] = useState("");
+
+  const addNoteItem = () => {
+    dispatch({
+      type: ADD_NOTE,
+      notes: {
+        id: Date.now(),
+        title: noteTitle,
+        value: noteValue,
+      },
+    });
+    setNoteTitle("");
+    setNoteValue("");
+    navigation.goBack();
+  };
+
   return (
     <React.Fragment>
       <View style={styles.container}>
-        <TextInput label="Title Notes" mode="outlined" style={styles.title} />
+        <TextInput
+          label="Title Notes"
+          mode="outlined"
+          style={styles.title}
+          value={noteTitle}
+          onChangeText={(title) => setNoteTitle(title)}
+        />
         <TextInput
           label="Notes"
           mode="outlined"
@@ -14,9 +41,11 @@ function AddNote() {
           scrollEnabled={true}
           returnKeyType="done"
           style={styles.textInput}
+          value={noteValue}
+          onChangeText={(value) => setNoteValue(value)}
         />
       </View>
-      <FAB style={styles.fab} small icon="check" />
+      <FAB style={styles.fab} small icon="check" onPress={addNoteItem} />
     </React.Fragment>
   );
 }

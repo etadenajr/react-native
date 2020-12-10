@@ -1,18 +1,41 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Text, FAB } from "react-native-paper";
+import React, { useContext } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { Text, FAB, List } from "react-native-paper";
+
+import { Context } from "../context/NoteContext";
 
 function Notes({ navigation }) {
+  const { state } = useContext(Context);
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>View Notes</Text>
+    <React.Fragment>
+      <View style={styles.container}>
+        {state.length === 0 ? (
+          <Text style={styles.text}>View Notes</Text>
+        ) : (
+          <View>
+            <ScrollView>
+              {state.map(({ id, title, value }) => (
+                <List.Item
+                  key={id}
+                  description={() => (
+                    <View>
+                      <Text>{title}</Text>
+                      <Text>{value}</Text>
+                    </View>
+                  )}
+                />
+              ))}
+            </ScrollView>
+          </View>
+        )}
+      </View>
       <FAB
         style={styles.fab}
         label="Add Notes"
         small
         onPress={() => navigation.navigate("AddNote")}
       />
-    </View>
+    </React.Fragment>
   );
 }
 
