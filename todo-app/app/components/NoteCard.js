@@ -4,13 +4,19 @@ import { Card, Title, Paragraph } from "react-native-paper";
 
 const NoteCard = ({ title, value }) => {
   return (
-    <View style={styles.container}>
-      <Card>
+    <Card style={styles.card}>
+      <Card.Content>
         <Title>{title}</Title>
         <Paragraph>{value}</Paragraph>
-      </Card>
-    </View>
+      </Card.Content>
+    </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    width: 350,
+  },
+});
 
 export default NoteCard;

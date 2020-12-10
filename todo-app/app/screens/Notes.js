@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import { Text, FAB, List } from "react-native-paper";
 
 import { Context } from "../context/NoteContext";
+import NoteCard from "../components/NoteCard";
 
 function Notes({ navigation }) {
   const { state } = useContext(Context);
@@ -17,12 +18,7 @@ function Notes({ navigation }) {
               {state.map(({ id, title, value }) => (
                 <List.Item
                   key={id}
-                  description={() => (
-                    <View>
-                      <Text>{title}</Text>
-                      <Text>{value}</Text>
-                    </View>
-                  )}
+                  description={() => <NoteCard title={title} value={value} />}
                 />
               ))}
             </ScrollView>
