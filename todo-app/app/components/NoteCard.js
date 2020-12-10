@@ -4,8 +4,8 @@ import { Card, Title, Paragraph } from "react-native-paper";
 
 const NoteCard = ({ title, value }) => {
   return (
-    <Card style={styles.card}>
-      <Card.Content>
+    <Card>
+      <Card.Content style={styles.card}>
         <Title>{title}</Title>
         <Paragraph>{value}</Paragraph>
       </Card.Content>
@@ -15,7 +15,7 @@ const NoteCard = ({ title, value }) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 350,
+    width: 260,
   },
 });
 

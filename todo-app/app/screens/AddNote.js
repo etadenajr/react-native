@@ -10,8 +10,13 @@ function AddNote({ navigation }) {
   const [noteTitle, setNoteTitle] = useState("");
   const [noteValue, setNoteValue] = useState("");
 
+  const value = useMemo(
+    () => ({ dispatch, noteTitle, setNoteTitle, noteValue, setNoteValue }),
+    [dispatch, noteTitle, setNoteTitle, noteValue, setNoteValue]
+  );
+
   const addNoteItem = () => {
-    dispatch({
+    value.dispatch({
       type: ADD_NOTE,
       notes: {
         id: Date.now(),
@@ -19,8 +24,8 @@ function AddNote({ navigation }) {
         value: noteValue,
       },
     });
-    setNoteTitle("");
-    setNoteValue("");
+    value.setNoteTitle("");
+    value.setNoteValue("");
     navigation.goBack();
   };
 
@@ -32,20 +37,26 @@ function AddNote({ navigation }) {
           mode="outlined"
           style={styles.title}
           value={noteTitle}
-          onChangeText={(title) => setNoteTitle(title)}
+          onChangeText={(title) => value.setNoteTitle(title)}
         />
         <TextInput
           label="Notes"
-          mode="outlined"
+          mode="flat"
           multiline={true}
           scrollEnabled={true}
           returnKeyType="done"
           style={styles.textInput}
           value={noteValue}
-          onChangeText={(value) => setNoteValue(value)}
+          onChangeText={(note) => value.setNoteValue(note)}
         />
       </View>
-      <FAB style={styles.fab} small icon="check" onPress={addNoteItem} />
+      <FAB
+        style={styles.fab}
+        small
+        icon="check"
+        onPress={addNoteItem}
+        disabled={(noteTitle && noteValue) === "" ? true : false}
+      />
     </React.Fragment>
   );
 }
