@@ -8,17 +8,18 @@ import NoteCard from "../components/NoteCard";
 
 function Notes({ navigation }) {
   const { state, dispatch } = useContext(Context);
-  const value = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
   return (
     <React.Fragment>
       <View style={styles.container}>
         {state.length === 0 ? (
-          <Text style={styles.text}>View Notes</Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>Welcome to SimpleNote</Text>
+          </View>
         ) : (
           <View style={styles.listContainer}>
             <ScrollView>
-              {value.state.map(({ id, title, value }) => (
+              {state.map(({ id, title, value }) => (
                 <List.Item
                   key={id}
                   description={() => (
@@ -29,7 +30,7 @@ function Notes({ navigation }) {
                         small
                         style={styles.fabItem}
                         onPress={() => {
-                          value.dispatch({ type: REMOVE_NOTE, payload: id });
+                          dispatch({ type: REMOVE_NOTE, payload: id });
                         }}
                       />
                     </View>
@@ -55,6 +56,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
+  },
+  textContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
   },
   fab: {
     backgroundColor: "gray",
