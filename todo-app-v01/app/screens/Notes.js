@@ -1,12 +1,21 @@
 import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
+import AppButton from "../components/AppButton";
+
 function Notes({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Hello Notes</Text>
-      <Button onPress={() => navigation.navigate("AddNotes")} title="Add" />
-    </View>
+    <React.Fragment>
+      <View style={styles.container}>
+        <Text>Hello Notes</Text>
+      </View>
+      <AppButton
+        styleView={styles.buttonContainer}
+        onPress={() => navigation.navigate("AddNotes")}
+      >
+        Add
+      </AppButton>
+    </React.Fragment>
   );
 }
 
