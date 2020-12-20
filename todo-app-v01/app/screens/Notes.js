@@ -3,10 +3,11 @@ import { StyleSheet, View } from "react-native";
 
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
+import ScreenPadding from "../components/ScreenPadding";
 
 function Notes({ navigation }) {
   return (
-    <React.Fragment>
+    <ScreenPadding>
       <View style={styles.container}>
         <AppText styleView={styles.container}>Hello World</AppText>
       </View>
@@ -16,7 +17,7 @@ function Notes({ navigation }) {
       >
         Add Notes
       </AppButton>
-    </React.Fragment>
+    </ScreenPadding>
   );
 }
 

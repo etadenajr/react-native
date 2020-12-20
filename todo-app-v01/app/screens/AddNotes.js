@@ -5,10 +5,11 @@ import AppText from "../components/AppText";
 import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
 import KeyBoardPadding from "../components/KeyBoardPadding";
+import ScreenPadding from "../components/ScreenPadding";
 
 function AddNotes() {
   return (
-    <React.Fragment>
+    <ScreenPadding>
       <KeyBoardPadding>
         <AppText styleView={styles.textView}>Note</AppText>
         <AppTextInput
@@ -29,7 +30,7 @@ function AddNotes() {
       </KeyBoardPadding>
 
       <AppButton styleView={styles.buttonDone}>Done</AppButton>
-    </React.Fragment>
+    </ScreenPadding>
   );
 }
 

@@ -9,6 +9,7 @@ export default function ScreenPadding({ children }) {
 
 const styles = StyleSheet.create({
   containerSafeView: {
+    flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
