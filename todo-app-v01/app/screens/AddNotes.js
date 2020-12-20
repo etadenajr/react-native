@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, KeyboardAvoidingView } from "react-native";
+import { StyleSheet } from "react-native";
 
 import AppText from "../components/AppText";
 import AppTextInput from "../components/AppTextInput";
