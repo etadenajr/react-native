@@ -16,7 +16,14 @@ export default function App() {
           component={Notes}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="AddNotes" component={AddNotes} />
+        <Stack.Screen
+          name="AddNotes"
+          component={AddNotes}
+          options={{
+            headerTitle: false,
+            headerStyle: { height: 40 },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
