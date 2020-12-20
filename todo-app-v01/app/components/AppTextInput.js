@@ -3,34 +3,26 @@ import { StyleSheet, TextInput } from "react-native";
 
 export default function AppTextInput({
   autoCorrect,
-  autoFocus,
-  editable,
   multiline,
-  maxLength,
   numberOfLines,
   onChangeText,
-  onScroll,
-  onLayout,
   placeholder,
   placeholderTextColor,
   styleTextInput,
   scrollEnabled,
+  value,
 }) {
   return (
     <TextInput
       autoCorrect={autoCorrect}
-      autoFocus={autoFocus}
-      editable={editable}
       multiline={multiline}
-      maxLength={maxLength}
       numberOfLines={numberOfLines}
       onChangeText={onChangeText}
-      onScroll={onScroll}
-      onLayout={onLayout}
       placeholder={placeholder}
       placeholderTextColor={placeholderTextColor}
       scrollEnabled={scrollEnabled}
       style={[styles.containerTextInput, styleTextInput]}
+      value={value}
     />
   );
 }
