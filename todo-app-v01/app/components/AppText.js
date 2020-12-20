@@ -1,0 +1,20 @@
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
+
+export default function AppText({ children, styleView, styleText }) {
+  return (
+    <View style={[styles.containerView, styleView]}>
+      <Text style={[styles.containerText, styleText]}>{children}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  containerView: {
+    flex: 1,
+  },
+  containerText: {
+    fontFamily: "sans-serif-thin",
+    fontSize: "18",
+  },
+});
