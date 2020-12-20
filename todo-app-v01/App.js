@@ -11,8 +11,16 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Notes">
-        <Stack.Screen name="Notes" component={Notes} />
-        <Stack.Screen name="AddNotes" component={AddNotes} />
+        <Stack.Screen
+          name="Notes"
+          component={Notes}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddNotes"
+          component={AddNotes}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
