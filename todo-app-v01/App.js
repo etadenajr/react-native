@@ -11,19 +11,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Notes">
-        <Stack.Screen
-          name="Notes"
-          component={Notes}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="AddNotes"
-          component={AddNotes}
-          options={{
-            headerTitle: false,
-            headerStyle: { height: 40 },
-          }}
-        />
+        <Stack.Screen name="Notes" component={Notes} />
+        <Stack.Screen name="AddNotes" component={AddNotes} />
       </Stack.Navigator>
     </NavigationContainer>
   );

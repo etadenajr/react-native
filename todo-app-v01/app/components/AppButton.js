@@ -3,10 +3,11 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 export default function ({ children, onPress, styleView, styleText }) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={[styles.containerView, styleView]}>
-        <Text style={[styles.containerText, styleText]}>{children}</Text>
-      </View>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.containerView, styleView]}
+    >
+      <Text style={[styles.containerText, styleText]}>{children}</Text>
     </TouchableOpacity>
   );
 }

@@ -10,11 +10,9 @@ export default function AppText({ children, styleView, styleText }) {
 }
 
 const styles = StyleSheet.create({
-  containerView: {
-    flex: 1,
-  },
+  containerView: {},
   containerText: {
-    fontFamily: "sans-serif-thin",
-    fontSize: "18",
+    fontFamily: "sans-serif",
+    fontSize: 18,
   },
 });
