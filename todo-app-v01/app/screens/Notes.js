@@ -2,12 +2,13 @@ import React from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
 import AppButton from "../components/AppButton";
+import AppText from "../components/AppText";
 
 function Notes({ navigation }) {
   return (
     <React.Fragment>
       <View style={styles.container}>
-        <Text>Hello Notes</Text>
+        <AppText>Hello World</AppText>
       </View>
       <AppButton
         styleView={styles.buttonContainer}
