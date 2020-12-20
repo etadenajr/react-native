@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
   },
   containerText: {
     fontFamily: "sans-serif-thin",
-    fontSize: 18,
+    fontSize: 16,
   },
 });

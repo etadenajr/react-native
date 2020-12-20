@@ -13,7 +13,7 @@ function Notes({ navigation }) {
         styleView={styles.buttonContainer}
         onPress={() => navigation.navigate("AddNotes")}
       >
-        Add
+        Add Notes
       </AppButton>
     </React.Fragment>
   );
