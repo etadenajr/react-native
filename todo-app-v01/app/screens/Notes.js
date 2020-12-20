@@ -25,6 +25,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonContainer: {
+    backgroundColor: "lightblue",
+    position: "absolute",
+    right: 0,
+    bottom: 0,
+    margin: 10,
+    padding: 10,
+    borderRadius: 20,
+  },
 });
 
 export default Notes;
